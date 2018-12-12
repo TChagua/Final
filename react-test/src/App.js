@@ -7,7 +7,7 @@ import RegistrationForm from './components/RegistrationForm'
 import Main from './components/Main'
 import Products from './components/Products'
 import ProductDetails from './components/common/ProductDetails'
-
+import CartProducts from './components/CartProducts'
 
 class App extends Component {
   state= {
@@ -57,6 +57,10 @@ class App extends Component {
           path="/products/:id" 
           component={ProductDetails}
           />
+          <Route 
+          path="/cart" 
+          component={CartProducts}
+          />
         </div>
       
       </Router>
@@ -74,7 +78,7 @@ class App extends Component {
           path="/register" 
           component={ (props) => <RegistrationForm register={this.registerUser} {...props}/>}
           />
-          <Product />
+    
       </div>
        </Router> */}
 
