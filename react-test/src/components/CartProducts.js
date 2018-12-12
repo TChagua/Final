@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link} from 'react-router-dom';
 import CartProduct from './common/CartProduct'
 
 const CartProducts = (props) => {

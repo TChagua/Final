@@ -8,7 +8,7 @@ import Main from './components/Main'
 import Products from './components/Products'
 import ProductDetails from './components/common/ProductDetails'
 import CartProducts from './components/CartProducts'
-
+import User from "./components/User"
 class App extends Component {
   state= {
     users:'',
@@ -60,6 +60,10 @@ class App extends Component {
           <Route 
           path="/cart" 
           component={CartProducts}
+          />
+          <Route 
+          path="/user" 
+          component={User}
           />
         </div>
       
