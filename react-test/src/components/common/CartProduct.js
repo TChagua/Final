@@ -14,7 +14,6 @@ const CartProduct = (props) => {
                     <p>Free</p>
                     <p>Delivered in 2-3 business days</p>
                     </li>
-                    
             </ul>
         </div>
     )

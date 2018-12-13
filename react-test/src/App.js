@@ -8,7 +8,8 @@ import Main from './components/Main'
 import Products from './components/Products'
 import ProductDetails from './components/common/ProductDetails'
 import CartProducts from './components/CartProducts'
-import User from "./components/User"
+import Account from "./components/Account"
+import ProductForm from "./components/ProductForm"
 class App extends Component {
   state= {
     users:'',
@@ -62,8 +63,16 @@ class App extends Component {
           component={CartProducts}
           />
           <Route 
-          path="/user" 
-          component={User}
+          path="/account" 
+          component={Account}
+          />
+          <Route 
+          path="/productForm/add" 
+          component={ProductForm}
+          />
+          <Route 
+          path="/productForm/edit" 
+          component={ProductForm}
           />
         </div>
       

@@ -14,6 +14,7 @@
   border:1px solid #ECEAEA;
   width: 22%;
   margin: 10px;
+  position:relative;
 }
 .product-link {
   text-decoration: none;
@@ -47,6 +48,29 @@
     color: #999;
     margin: 5px 0 0 0;
     text-transform: uppercase;
+}
+
+.edit, .add{
+  text-transform: uppercase;
+  padding: 5px 15px;
+  background: #000;
+  color: #fff;
+  outline: none;
+  border:none;
+  position: absolute;
+  bottom:10px;
+  right:0;
+}
+.edit:hover, .add:hover{
+  background: lightseagreen;
+  cursor: pointer;
+  text-decoration: none;
+  color:#fff;
+}
+.remove{
+  position: absolute;
+  top:10px;
+  right:10px;
 }
 
 /* Product Details */
@@ -223,4 +247,10 @@
 .user-nav-link:hover{
   color:lightseagreen;
   text-decoration: none;
+}
+
+/* product-form*/
+.product-form{
+  max-width: 50%;
+  margin-left: 20px;
 }

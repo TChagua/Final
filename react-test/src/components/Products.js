@@ -15,24 +15,28 @@ class Products extends Component {
            this.setState({products:response.data})
         })
       }
-
+     
     componentDidMount() {
         this.getProducts()
     }
     render(){
         return (
             <div className="product-container">
-            {
-                this.state.products.map( (el) =>(
-                <Product
-                key={el.id}
-                id={el.id}
-                price={el.price}
-                name={el.name}
-                url={el.url}
-                />
-            ))
-            }
+                {
+                    this.state.products.map( (el) =>(
+                    <Product
+                    key={el.id}
+                    id={el.id}
+                    price={el.price}
+                    name={el.name}
+                    url={el.url}
+                    />
+                ))
+                }
+                <div className="product-item">
+                        <i className="far fa-image fa-7x"></i>
+                        <Link to="/productForm/add" className="add">Add</Link>
+                </div>
             </div>
         )
     }
