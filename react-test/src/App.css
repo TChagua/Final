@@ -116,34 +116,37 @@
 }
 /* Cart Products */
 .cart{
-  display:grid;
-  grid-template-columns: repeat(4, auto);
-  max-width: 90%;
   margin: auto;
   font-family: 'BreeSerif-Regular';
+  position: relative;
 }
 .title{
-  grid-column: 1/5;
   text-align: center;
   text-transform: uppercase;
   margin-top: 20px;
 }
-.subtitle{
-  grid-column: 1/5;
+.sub-title{
   margin-top: 20px;
+  margin-left: 5%;
 }
-.cart-header{
-  grid-column: 1/5;
-}
+
 .cart-headings{
+  display: flex;
+  align-items: flex-start;
+  flex-flow: row wrap;
+  text-align: center;
+  height: 100%;
+  max-width: 90%;
+  margin: auto;
   list-style-type: none;
   border: 1px solid #aaa;
   
 }
 .cart-headings li {
   display: inline-block;
-  padding: 10px 80px;
+  padding: 10px 0px;
   font-size: 22px;
+  width: 25%;
   
 }
 .purchase{
@@ -154,8 +157,7 @@
   outline: none;
   border:none;
   margin-top: 10px;
-  grid-column: 4/5;
-  justify-self: end;
+  margin-left: 87%;
 }
 .purchase:hover{
   background: lightseagreen;
@@ -164,34 +166,32 @@
 
 /*Single Cart Product*/
 
-.cart-item{
-  border-bottom: 1px solid #000;
-  grid-column: 1/5;
-  background: #f0f5f5;
-  font-family: 'BreeSerif-Regular';
-}
 .cart-item-image{
   height: 200px;
-  margin-left: -50px;
+  margin-left: -5%;
 }
 .cart-item-list{
-  list-style-type: none;
+  display: flex;
+  align-items: flex-start;
+  flex-flow: row wrap;
+  text-align: center;
+  height: 100%;
+  max-width: 90%;
   margin: auto;
+  list-style-type: none;
+  border: 1px solid #aaa;
+  border-bottom: 1px solid #000;
+  background: #f0f5f5;
 }
 .cart-item-list li {
   display: inline-block;
-  padding: 10px 70px;
+  padding: 20px 0px;
   font-size: 25px;
+  width: 25%;
 }
-.cart-item-list li:nth-child(2){
-  margin-left: -30px;
-}
-.cart-item-list li:nth-child(3){
-  margin-left: 80px;
-}
+
 .cart-item-list p{
   font-size:17px;
-  margin: 5px 50px
 }
 .cart-item-list p:last-child{
   font-size:15px;
@@ -201,10 +201,10 @@
 .fa-times {
   border-radius: 50%;
   padding: 5px;
-  border: 2px solid rgb(137, 210, 235);
-  color:rgb(137, 210, 235);
-  margin-left: 300px;
+  border: 2px solid lightseagreen;
+  color:lightseagreen;
   cursor: pointer;
+  margin-left: 80%;
 }
 
 /* User Account */
@@ -239,7 +239,6 @@
   display: inline;
   padding: 5px 40px;
   border: 1px solid #94b8b8;
-  border-collapse: collapse;
 }
 .user-nav-link{
   color:#000;
