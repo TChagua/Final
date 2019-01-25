@@ -1,98 +1,153 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { ProtectedRoute } from './routes/ProtectedRoute';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import RegistrationForm from './components/RegistrationForm'
-import Main from './components/Main'
+import Header from './components/Header';
+import Navigation from './components/Navigation';
+import Slider from './components/Slider';
+import Information from './components/Information';
+import Footer from './components/Footer';
 import Products from './components/Products'
-import ProductDetails from './components/common/ProductDetails'
-import CartProducts from './components/CartProducts'
-import Account from "./components/Account"
-import ProductForm from "./components/ProductForm"
-class App extends Component {
-  state= {
-    users:'',
-    products:'',
-  } 
+import ProductDetails from './components/common/ProductDetails';
+import Profile from './components/Profile';
+import Login from './components/Login';
+import CartProducts from './components/CartProducts';
+import BoughtProducts from './components/BoughtProducts';
+import Admin from './components/Admin';
+import Users from './components/Users';
+import UserCart from './components/UserCart';
+import UserPurchases from './components/UserPurchases';
+import UserMessages from './components/UserMessages';
+import EditUserName from './components/EditUserName';
+import ProductForm from './components/ProductForm';
+import Contact from './components/Contact';
+import About from './components/About'
+import 'antd/dist/antd.css';
 
-  getProducts = () => {
-    axios.get('http://localhost:5000/products')
-    .then(response => {
-      console.log(response.data)
-       this.setState({products:response.data})
-    })
-  }
-  getUsers = () => {
-    axios.get('http://localhost:5000/users')
-    .then(response => {
-      console.log(response.data)
-       this.setState({products:response.data})
-  })
+
+const Main = () => {
+  return (
+    <>
+      <Slider />
+      <Products />
+    </>
+
+  )
+
 }
+
+
+class App extends Component {
+
+
+
   registerUser = (newUser) => {
-      axios.post('http://localhost:5000/register', newUser)
-      .then(response => response.data)
-      .then(newItem => {
-         console.log(newItem)
-         const  data = [...this.state.users, newItem]
-         this.setState({users:data})
-      })
-  
+    axios.post('http://localhost:5000/register', newUser)
   }
 
-  // componentDidMount(){
-  //   this.getProducts()
-    // this.getUsers()
-  // }
+
   render() {
     return (
       <Router>
-        <div>
-        <Route 
-          path="/"
-          exact 
-          component={Products}
+        <div className="App">
+          <Header />
+          <Route path="/" component={Navigation} />
+          <Route
+            path="/"
+            exact
+            component={Main}
           />
-          <Route 
-          path="/products/:id" 
-          component={ProductDetails}
+          <Route
+            path="/products/:id"
+            component={ProductDetails}
           />
-          <Route 
-          path="/cart" 
-          component={CartProducts}
+          <Route
+            path="/register"
+            component={(props) => <RegistrationForm register={this.registerUser} {...props} />}
           />
-          <Route 
-          path="/account" 
-          component={Account}
+          <Route
+            path="/login"
+            component={(props) => <Login
+              showLogin={(change) => { this.setState({ showLogin: change }) }
+              }
+              showAdmin={(change) => { this.setState({ admin: change }) }
+              }
+              {...props}
+            />}
           />
-          <Route 
-          path="/productForm/add" 
-          component={ProductForm}
+          <Route path="/about" component={About} />
+          <ProtectedRoute
+            exact
+            path="/profile"
+            component={Profile}
           />
-          <Route 
-          path="/productForm/edit" 
-          component={ProductForm}
+          <ProtectedRoute
+            exact
+            path="/admin"
+            component={Admin}
           />
+          <ProtectedRoute
+            exact
+            path="/admin/users"
+            component={Users}
+          />
+          <ProtectedRoute
+            exact
+            path="/admin/products"
+            component={Products}
+          />
+          <ProtectedRoute
+            exact
+            path="/admin/products/add"
+            component={ProductForm}
+          />
+          <ProtectedRoute
+            exact
+            path="/admin/products/edit/:id"
+            component={ProductForm}
+          />
+          <ProtectedRoute
+            exact
+            path="/admin/users/cart/:id"
+            component={UserCart}
+          />
+          <ProtectedRoute
+            exact
+            path="/admin/users/username/:username"
+            component={EditUserName}
+          />
+          <ProtectedRoute
+            exact
+            path="/admin/users/purchases/:id"
+            component={UserPurchases}
+          />
+          <ProtectedRoute
+            exact
+            path="/admin/users/messages/:id"
+            component={UserMessages}
+          />
+          <ProtectedRoute
+            exact
+            path="/profile/cart"
+            component={CartProducts}
+          />
+          <ProtectedRoute
+            path="/profile/contact"
+            component={Contact}
+          />
+          <ProtectedRoute
+            path="/profile/purchases"
+            component={BoughtProducts}
+          />
+          <Information />
+          <Footer />
         </div>
-      
       </Router>
     );
   }
 }
- {/* <Router>
-        <div className="App">
-        <Route 
-          path="/"
-          exact 
-          component={Main}
-          />
-        <Route 
-          path="/register" 
-          component={ (props) => <RegistrationForm register={this.registerUser} {...props}/>}
-          />
-    
-      </div>
-       </Router> */}
 
 export default App;

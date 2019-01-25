@@ -1,0 +1,63 @@
+.details{
+  display:flex;
+  max-width: 90%;
+  margin: auto;
+  padding: 40px 0;
+
+}
+
+
+.details-image{
+  margin-top: 15px;
+  width: 400px;
+  height:500px;
+}
+
+.details-text{
+  display: flex;
+  flex-direction: column;
+}
+
+.details-name{
+  font-size: 40px;
+  color: #000;
+  margin: 30px 0 0 0;
+  font-family: 'BreeSerif-Regular';
+}
+
+.details-price{
+  font-size: 30px;
+  color: #000;
+  margin: 5px 0 0 0;
+  font-family: 'BreeSerif-Regular';
+}
+
+
+
+
+  /* This is responsive for tablet */
+
+ @media all and (min-width:520px) and (max-width: 860px) {  
+  .details-image {
+    height:400px;
+    width:300px;
+  }
+ 
+  
+}
+
+
+
+  /* This is responsive for mobile */
+
+@media all and (max-width: 519px) {
+  .details-image {
+    height:auto;
+    width:300px;
+    margin:auto;
+  }
+  .details{
+    flex-direction: column;
+  }
+  
+}
